@@ -1,0 +1,104 @@
+# MVP SPECIFICATION
+
+We will be adopting the single page web application architecture. This offers our web application a dynamic frame-work, which allows for interaction with users by use of data update within the existing page. This means application requests only needed content details and loading totally new pages from the server will be prevented and the process will help managing UI view creation that is detached from the server, which is an advantage from architectural standpoint.
+The overview of the single page web application architecture design is that: full browser refresh is not required, UI presentation logic resides in the client side and data-only server transaction. We will be using HTML with JS (jquery-ajax) for Send and Get request from backend API, and single platform frame work (flasks jinja 2)
+ 
+
+# API
+# API Routes
+
+/api/v1/auth:driver/signin
+POST: for user’s login authentication
+
+/api/v1/auth:car_owner/signin
+POST: for user’s login authentication
+
+/api/v1/auth:driver/signup
+POST: for user’s registeration
+
+/api/v1/auth:car_owner/signup
+POST: for user’s registeration
+
+
+/api/v1/auth/user:driver
+GET: to returns information of the user based on id
+
+api/v1/auth/user:car_owner
+GET: to returns information of the user based on id
+
+
+/api/v1/auth/user:driver/:user_id/update
+PATCH: for user’s information update
+
+/api/v1/auth/user:car_owner/:user_id/update
+PATCH: for user’s information update
+
+/api/v1/search/location
+GET: to return all search by location
+
+/api/v1/search/location:user_id
+GET: to return the selected location search based on user_id
+
+
+/api/v1/search/availability
+GET: to return all search by availability
+
+
+/api/v1/ search/availability:user_id
+GET: to return all search by availability based on the user_id
+
+/api/v1/search/specilization
+GET: to return all search by specilization
+
+
+/api/v1/ search/ specilization:user_id
+GET: to return all search by specilization based on the user_id
+
+/api/v1/ auth/new request:user_id
+GET: to create new request based on the user_id
+
+
+/api/v1/ auth/new request:user_id/update
+PATCH: Updates a mission based on the mission_id and user_id
+
+/api/v1/request/status/user_id
+GET: to return the status request based on user_id
+
+/api/v1/missions/:mission_id/apply
+POST: Creates a new application entry based on user_id and mission_id
+
+/api/v1/driver/user/request/user_id
+GET: to return the list of request entries sent to a driver based on user_id
+
+/api/v1/carowner/request/:app_id
+GET: to return selected car owner request entry based on user_id
+
+/api/v1/car_owner/re/:user_id/status
+POST: to updates the status of a car owner request (accepted or declined)
+
+/api/v1/auth/user:driver/login_password
+PATCH: to update the login_password of a user.
+
+api/v1/auth/user:car_owner/login_password
+PATCH: to update the login_password of a user.
+
+
+# Third Party APIs
+Google map - Location API
+Identity API – A driver licensing verification API 
+
+
+# Data Modeling
+Drivry is designed to use 6 relational database tables which was designed using sqlDBM. The parent tables are seen pointing to the child table. The primary keys are indicated on the two parent tables which related by a non-identifying relations, while the child table are related to the parent tables by an identifying relation. The primary keys (PK) are in black ink while foreign keys are in blue ink. 
+
+
+# User Stories
+The user story clearly explain the needs and preference of our potential user, which gives us better understanding of the kind of design and functionalities to be creates for the website to meet the needs of the users.
+
+As a car owner, I want to be able to easily search for drivers based on location, availability and professionalism.
+As a driver, I want to be able to search for car owners who might need service.
+As a car owner, I want to be able to view the profile and licensing status of drivers.
+As a driver, I want to be able to receive and view request and offers
+As a car owner, I want to be able to rate drivers and make recommendation.
+As a driver, I want to be able to accept or reject request and offers.
+As a driver, I want to be able rate car owners and leave feedback about my experiences and provide suggestions for improvement.
